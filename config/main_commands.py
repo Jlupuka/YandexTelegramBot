@@ -1,7 +1,7 @@
 from aiogram import Bot
 from aiogram.types import BotCommand
 
-from lexicon.ru.lexicon import MainCommands
+from lexicon.ru.buttons_lexicon import MainCommands
 from service.loggerSerice.settings_logger import logger
 
 
