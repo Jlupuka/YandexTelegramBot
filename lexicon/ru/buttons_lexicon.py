@@ -5,6 +5,8 @@ class StartButtons(Enum):
     dice: str = "Dice 🎲"
     timer: str = "Таймер 🕘"
     survey: str = "Пройти опрос ❓"
+    excursion: str = "В греческом зале... 🎭"
+    poems: str = "Поэзия ✍️"
 
 
 class DiceButtons(Enum):
@@ -27,7 +29,8 @@ class MainCommands(Enum):
     close: str = "Остановить все таймеры"
     stop: str = "Остановить опросник"
     excursion: str = "В греческом зале..."
-    
+    poems: str = "В гостях у поэзии"
+
 
 class SkipSurvey(Enum):
     skip_get_city: str = "Пропустить ➡️"
@@ -39,3 +42,8 @@ class ExcursionButtons(Enum):
     second_hall: str = "Пройти во второй зал 🪕"
     third_hall: str = "Пройти в третий зал 🪈"
     back_wardrobe: str = "⛓ Вернуться в гардеробную ⛓"
+
+
+class PoemsButtons(Enum):
+    play: str = "Начать играть 🎮"
+    hint: str = "Подсказка 💡"

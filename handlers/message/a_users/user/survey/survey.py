@@ -7,6 +7,7 @@ from factory.factory import UserCallbackFactory
 from keyboard.factory.keboard import Factories
 from lexicon.ru.buttons_lexicon import MainCommands, StartButtons
 from lexicon.ru.text_lexicon import SurveyText
+from service.botSerivce.keyboard_resize import KeyboardResize
 from states.states import FSMServey
 
 router: Router = Router()
@@ -30,5 +31,7 @@ async def get_weather_handler(message: Message, state: FSMContext) -> None:
                          reply_markup=await Factories.factory_menu(
                              callback_factory=UserCallbackFactory,
                              buttons=StartButtons,
-                             sizes=(2, 1),
+                             sizes=await KeyboardResize.two_one(
+                                 count_main_buttons=len(StartButtons),
+                                 count_any_buttons=0),
                          ))

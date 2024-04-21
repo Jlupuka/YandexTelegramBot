@@ -3,10 +3,21 @@ from aiogram.types import CallbackQuery
 
 from factory.factory import UserCallbackFactory
 from keyboard.factory.keboard import Factories
-from lexicon.ru.buttons_lexicon import ExcursionButtons, MainCommands
+from lexicon.ru.buttons_lexicon import ExcursionButtons, MainCommands, StartButtons
 from lexicon.ru.text_lexicon import ExcursionText, BackText
 
 router: Router = Router()
+
+
+@router.callback_query(UserCallbackFactory.filter(F.page == StartButtons.excursion.name))
+async def command_excursion(callback: CallbackQuery) -> None:
+    await callback.message.edit_text(text=ExcursionText.startExcursion,
+                                     reply_markup=await Factories.factory_menu(
+                                         callback_factory=UserCallbackFactory,
+                                         sizes=(1, 1),
+                                         buttons=(ExcursionButtons.wardrobe,),
+                                         back=MainCommands.start.name
+                                     ))
 
 
 @router.callback_query(UserCallbackFactory.filter(F.page.in_({ExcursionButtons.wardrobe.name,

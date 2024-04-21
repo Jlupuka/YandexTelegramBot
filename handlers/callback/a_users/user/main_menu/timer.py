@@ -11,6 +11,7 @@ from handlers_scheduler.user.timer import sending_a_timer_callback
 from keyboard.factory.keboard import Factories
 from lexicon.ru.buttons_lexicon import StartButtons, TimerButtons, MainCommands
 from lexicon.ru.text_lexicon import MessageText, CommandText
+from service.botSerivce.keyboard_resize import KeyboardResize
 from service.scriptsService.time_service import TimeService
 
 router: Router = Router()
@@ -45,5 +46,7 @@ async def callback_start_timer(callback: CallbackQuery,
     return await callback.message.edit_text(
         text=CommandText.setTimer.format(sleepTime=getattr(TimerButtons, callback_data.page).value),
         reply_markup=await Factories.factory_menu(callback_factory=UserCallbackFactory,
-                                                  sizes=(2, 1),
+                                                  sizes=await KeyboardResize.two_one(
+                                                      count_main_buttons=len(StartButtons),
+                                                      count_any_buttons=0),
                                                   buttons=StartButtons))
