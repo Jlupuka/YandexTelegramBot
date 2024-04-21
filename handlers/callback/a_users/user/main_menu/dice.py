@@ -56,7 +56,7 @@ async def callback_dice_game(callback: CallbackQuery,
                 )
                 return callback.message.edit_text(
                     text=MessageText.dice.format(
-                        number=MessageText.double_dice.format(
+                        number=MessageText.doubleDice.format(
                             first=first,
                             second=second
                         )

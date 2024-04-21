@@ -4,7 +4,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from factory.factory import UserCallbackFactory
-from lexicon.ru.text_lexicon import Default
+from lexicon.ru.text_lexicon import BackText
 
 
 class Factories:
@@ -15,7 +15,7 @@ class Factories:
             buttons=None,
             back: Union[str, bool] = False,
             back_page: Union[str, None] = None,
-            back_name: str = Default.backName,
+            back_name: str = BackText.backDefault,
     ) -> InlineKeyboardMarkup:
         if buttons is None:
             buttons = {}
