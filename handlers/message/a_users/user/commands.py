@@ -18,11 +18,12 @@ router: Router = Router()
 
 
 @router.message(Command(commands=[MainCommands.start.name]))
-async def command_start(message: Message) -> None:
+async def command_start(message: Message, state: FSMContext) -> None:
+    await state.set_state(None)
     await message.answer(text=MessageText.start,
                          reply_markup=await Factories.factory_menu(
                              callback_factory=UserCallbackFactory,
-                             sizes=(1, 1),
+                             sizes=(2, 1),
                              buttons=StartButtons,
                              back_page=MainCommands.start.name
                          ))
@@ -68,12 +69,12 @@ async def command_close(message: Message, state: FSMContext, scheduler: AsyncIOS
         return await message.answer(text=CommandText.close,
                                     reply_markup=await Factories.factory_menu(
                                         callback_factory=UserCallbackFactory,
-                                        sizes=(1, 1),
+                                        sizes=(2, 1),
                                         buttons=StartButtons,
                                     ))
     return await message.answer(text=ErrorText.emptyTimer,
                                 reply_markup=await Factories.factory_menu(
                                     callback_factory=UserCallbackFactory,
-                                    sizes=(1, 1),
+                                    sizes=(2, 1),
                                     buttons=StartButtons,
                                 ))

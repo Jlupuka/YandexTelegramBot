@@ -45,5 +45,5 @@ async def callback_start_timer(callback: CallbackQuery,
     return await callback.message.edit_text(
         text=CommandText.setTimer.format(sleepTime=getattr(TimerButtons, callback_data.page).value),
         reply_markup=await Factories.factory_menu(callback_factory=UserCallbackFactory,
-                                                  sizes=(1, 1),
+                                                  sizes=(2, 1),
                                                   buttons=StartButtons))

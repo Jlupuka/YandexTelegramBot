@@ -4,6 +4,7 @@ from enum import Enum
 class StartButtons(Enum):
     dice: str = "Dice 🎲"
     timer: str = "Таймер 🕘"
+    survey: str = "Пройти опрос ❓"
 
 
 class DiceButtons(Enum):
@@ -24,3 +25,8 @@ class MainCommands(Enum):
     date: str = "Узнать нынешнюю дату"
     set_timer: str = "Установить таймер"
     close: str = "Остановить все таймеры"
+    stop: str = "Остановить опросник"
+    
+
+class SkipSurvey(Enum):
+    skip_get_city: str = "Пропустить ➡️"
